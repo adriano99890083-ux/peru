@@ -1,0 +1,664 @@
+{
+  "title": "HEADROAD — Expedição Manaus ↔ Peru",
+  "description": "Roadtrip interativo de 21 dias: Manaus → Peru → Lima",
+  "totalDays": 21,
+  "totalKm": 4595,
+  "stops": [
+    {
+      "day": 1,
+      "cidade": "Manaus",
+      "estado": "Amazonas, Brasil",
+      "populacao": "1.680.000",
+      "altitude": 92,
+      "lat": -3.1190,
+      "lng": -60.0217,
+      "tipo": "Base",
+      "km": 0,
+      "tempo": "Preparação",
+      "dificuldade": "Preparação",
+      "descricao": "Dia base — equipamento, gasolina, documentação",
+      "pontos_interesse": [
+        {
+          "nome": "Mercado Adolpho Lisboa",
+          "tipo": "Mercado",
+          "descricao": "Mercado municipal, comida amazônica autêntica",
+          "tempo": "1-2h",
+          "custo": "R$ 30-50",
+          "lat": -3.1233,
+          "lng": -60.0277
+        },
+        {
+          "nome": "Teatro Amazonas",
+          "tipo": "Teatro",
+          "descricao": "Ópera histórica no coração da floresta",
+          "tempo": "45min",
+          "custo": "R$ 60",
+          "lat": -3.1165,
+          "lng": -60.0268
+        },
+        {
+          "nome": "Encontro das Águas",
+          "tipo": "Turismo Natural",
+          "descricao": "Confluência dos rios Negro e Solimões",
+          "tempo": "2-3h",
+          "custo": "R$ 80-120",
+          "lat": -3.2138,
+          "lng": -59.9533
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "cidade": "Humaitá",
+      "estado": "Amazonas, Brasil",
+      "populacao": "27.000",
+      "altitude": 38,
+      "lat": -7.5065,
+      "lng": -63.0273,
+      "tipo": "Parada",
+      "km": 445,
+      "tempo": "8-9h",
+      "dificuldade": "🔴 Extrema (BR-319)",
+      "descricao": "Primeira parada — BR-319 infernal",
+      "pontos_interesse": [
+        {
+          "nome": "Rio Madeira",
+          "tipo": "Rio",
+          "descricao": "Rio amazônico gigantesco",
+          "tempo": "Contínuo",
+          "lat": -7.5000,
+          "lng": -63.0300
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "cidade": "Porto Velho",
+      "estado": "Rondônia, Brasil",
+      "populacao": "428.000",
+      "altitude": 87,
+      "lat": -8.7619,
+      "lng": -63.9039,
+      "tipo": "Parada",
+      "km": 550,
+      "tempo": "7-8h",
+      "dificuldade": "🟠 Alta",
+      "descricao": "Transição BR-319 para BR-364",
+      "pontos_interesse": [
+        {
+          "nome": "Estrada de Ferro Madeira-Mamoré",
+          "tipo": "Histórico",
+          "descricao": "Ferrovia histórica amazônica",
+          "tempo": "1-2h",
+          "lat": -8.7600,
+          "lng": -63.9100
+        },
+        {
+          "nome": "Mercado Cultural",
+          "tipo": "Artesanato",
+          "descricao": "Artesanato, souvenirs",
+          "tempo": "30min",
+          "lat": -8.7650,
+          "lng": -63.9000
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "cidade": "Rio Branco",
+      "estado": "Acre, Brasil",
+      "populacao": "407.000",
+      "altitude": 160,
+      "lat": -9.9765,
+      "lng": -67.8042,
+      "tipo": "Parada",
+      "km": 480,
+      "tempo": "7h",
+      "dificuldade": "🟡 Média",
+      "descricao": "Melhor estrada que anteriores",
+      "pontos_interesse": [
+        {
+          "nome": "Palácio Rio Branco",
+          "tipo": "Histórico",
+          "descricao": "Edifício histórico centro",
+          "tempo": "20min",
+          "lat": -9.9750,
+          "lng": -67.8050
+        },
+        {
+          "nome": "Plaza Principal",
+          "tipo": "Praça",
+          "descricao": "Praça central iluminada à noite",
+          "tempo": "30min",
+          "lat": -9.9780,
+          "lng": -67.8030
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "cidade": "Assis Brasil / Iñapari",
+      "estado": "Acre-Peru",
+      "populacao": "6.000",
+      "altitude": 210,
+      "lat": -10.5839,
+      "lng": -68.7350,
+      "tipo": "Fronteira",
+      "km": 330,
+      "tempo": "6-7h",
+      "dificuldade": "🟡 Média",
+      "descricao": "Transição Fronteira Brasil-Peru",
+      "pontos_interesse": [
+        {
+          "nome": "Casa-Museu de Chico Mendes (Xapuri)",
+          "tipo": "Museu",
+          "descricao": "História ambiental e ativismo",
+          "tempo": "1-1.5h",
+          "lat": -10.5920,
+          "lng": -68.8120
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "cidade": "Puerto Maldonado",
+      "estado": "Madre de Dios, Peru",
+      "populacao": "90.000",
+      "altitude": 408,
+      "lat": -12.5933,
+      "lng": -69.1858,
+      "tipo": "Parada",
+      "km": 230,
+      "tempo": "5-6h",
+      "dificuldade": "🟢 Baixa",
+      "descricao": "Fim da Rota IDA — Porta Tambopata",
+      "pontos_interesse": [
+        {
+          "nome": "Rio Madre de Dios",
+          "tipo": "Rio",
+          "descricao": "Rio amazônico gigantesco",
+          "tempo": "Tours",
+          "lat": -12.5900,
+          "lng": -69.1850
+        },
+        {
+          "nome": "Mercado Central",
+          "tipo": "Mercado",
+          "descricao": "Vida amazônica local",
+          "tempo": "1h",
+          "lat": -12.5950,
+          "lng": -69.1900
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "cidade": "Puerto Maldonado",
+      "estado": "Madre de Dios, Peru",
+      "populacao": "90.000",
+      "altitude": 408,
+      "lat": -12.5933,
+      "lng": -69.1858,
+      "tipo": "Tour",
+      "km": 0,
+      "tempo": "7-9h (navegação fluvial)",
+      "dificuldade": "Média",
+      "descricao": "Tambopata & Repouso — Tour barco",
+      "pontos_interesse": [
+        {
+          "nome": "Rio Madre de Dios (Tour)",
+          "tipo": "Tour",
+          "descricao": "Jacarés, ariranhas, lontras gigantes",
+          "tempo": "2h",
+          "lat": -12.5900,
+          "lng": -69.1850
+        },
+        {
+          "nome": "Lago Sandoval",
+          "tipo": "Lago",
+          "descricao": "Lago natural em plena floresta",
+          "tempo": "3h",
+          "lat": -12.7300,
+          "lng": -69.0300
+        },
+        {
+          "nome": "Colpa de Guacamayos",
+          "tipo": "Natura",
+          "descricao": "Centenas de araras nos paredões!",
+          "tempo": "1-2h",
+          "lat": -12.7500,
+          "lng": -69.0100
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "cidade": "Cusco",
+      "estado": "Cusco, Peru",
+      "populacao": "427.000",
+      "altitude": 3400,
+      "lat": -13.5316,
+      "lng": -71.9877,
+      "tipo": "Hub",
+      "km": 500,
+      "tempo": "8-10h",
+      "dificuldade": "🔴 Alta (Subida Andes)",
+      "descricao": "ESPETÁCULO DOS ANDES — Selva → 4.725m",
+      "pontos_interesse": [
+        {
+          "nome": "Abra de Ocongate (4.725m)",
+          "tipo": "Mirante",
+          "descricao": "Mirante 360° dos Andes nevados",
+          "tempo": "20-30min",
+          "lat": -13.6944,
+          "lng": -70.9694
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "cidade": "Cusco",
+      "estado": "Cusco, Peru",
+      "populacao": "427.000",
+      "altitude": 3400,
+      "lat": -13.5316,
+      "lng": -71.9877,
+      "tipo": "Exploração",
+      "km": 0,
+      "tempo": "A pé (8:00-17:00)",
+      "dificuldade": "Baixa",
+      "descricao": "Centro Histórico & Aclimatação",
+      "pontos_interesse": [
+        {
+          "nome": "Plaza de Armas",
+          "tipo": "Praça",
+          "descricao": "Coração de Cusco",
+          "tempo": "2h",
+          "lat": -13.5316,
+          "lng": -71.9877
+        },
+        {
+          "nome": "Catedral de Cusco",
+          "tipo": "Iglesia",
+          "descricao": "Construída sobre Qorikancha (templo inca)",
+          "tempo": "45min",
+          "lat": -13.5320,
+          "lng": -71.9880
+        },
+        {
+          "nome": "San Blas",
+          "tipo": "Bairro",
+          "descricao": "Ruas de pedra inca",
+          "tempo": "2h",
+          "lat": -13.5280,
+          "lng": -71.9840
+        },
+        {
+          "nome": "Piedra de los 12 Ángulos",
+          "tipo": "Arqueológico",
+          "descricao": "Obra-prima inca",
+          "tempo": "15min",
+          "lat": -13.5270,
+          "lng": -71.9820
+        }
+      ]
+    },
+    {
+      "day": 10,
+      "cidade": "Cusco",
+      "estado": "Cusco, Peru",
+      "populacao": "427.000",
+      "altitude": 3400,
+      "lat": -13.5316,
+      "lng": -71.9877,
+      "tipo": "Tour",
+      "km": 150,
+      "tempo": "Dia inteiro (6:30-18:00)",
+      "dificuldade": "Média",
+      "descricao": "Vale Sagrado — Tour clássico",
+      "pontos_interesse": [
+        {
+          "nome": "Pisac",
+          "tipo": "Arqueológico",
+          "descricao": "Terraços espetaculares",
+          "tempo": "1-1.5h",
+          "lat": -13.4033,
+          "lng": -71.8464
+        },
+        {
+          "nome": "Moray",
+          "tipo": "Arqueológico",
+          "descricao": "Laboratório agrícola inca",
+          "tempo": "45min",
+          "lat": -13.4167,
+          "lng": -71.8333
+        },
+        {
+          "nome": "Salineras de Maras",
+          "tipo": "Natura",
+          "descricao": "5.000 piscinas de sal",
+          "tempo": "45min",
+          "lat": -13.4067,
+          "lng": -71.8667
+        },
+        {
+          "nome": "Ollantaytambo",
+          "tipo": "Arqueológico",
+          "descricao": "Terraços monumentais",
+          "tempo": "1h",
+          "lat": -13.2617,
+          "lng": -72.2622
+        },
+        {
+          "nome": "Chinchero",
+          "tipo": "Arqueológico",
+          "descricao": "Tecelagem tradicional viva",
+          "tempo": "1.5h",
+          "lat": -13.3981,
+          "lng": -71.8547
+        }
+      ]
+    },
+    {
+      "day": 11,
+      "cidade": "Machu Picchu",
+      "estado": "Cusco, Peru",
+      "populacao": "Sítio Arqueológico",
+      "altitude": 2430,
+      "lat": -13.1631,
+      "lng": -72.5450,
+      "tipo": "UNESCO",
+      "km": 90,
+      "tempo": "15-17h (trem+caminhada)",
+      "dificuldade": "🔴 Alta",
+      "descricao": "PIÈCE DE RÉSISTANCE — Patrimônio da Humanidade",
+      "pontos_interesse": [
+        {
+          "nome": "Machu Picchu Cidadela",
+          "tipo": "UNESCO",
+          "descricao": "Cidadela inca 2430m",
+          "tempo": "5h exploração",
+          "lat": -13.1631,
+          "lng": -72.5450
+        },
+        {
+          "nome": "Templo do Sol (Torreón)",
+          "tipo": "Arqueológico",
+          "descricao": "Observatório astronômico",
+          "tempo": "30min",
+          "lat": -13.1620,
+          "lng": -72.5460
+        },
+        {
+          "nome": "Intihuatana",
+          "tipo": "Arqueológico",
+          "descricao": "Relógio Solar Inca",
+          "tempo": "20min",
+          "lat": -13.1625,
+          "lng": -72.5445
+        },
+        {
+          "nome": "Mirante Clássico",
+          "tipo": "Foto",
+          "descricao": "Foto aérea icônica",
+          "tempo": "30min",
+          "lat": -13.1640,
+          "lng": -72.5435
+        }
+      ]
+    },
+    {
+      "day": 12,
+      "cidade": "Cusco",
+      "estado": "Cusco, Peru",
+      "populacao": "427.000",
+      "altitude": 3400,
+      "lat": -13.5316,
+      "lng": -71.9877,
+      "tipo": "Repouso",
+      "km": 0,
+      "tempo": "Relaxado (8:00-19:30)",
+      "dificuldade": "Baixa",
+      "descricao": "Recuperação em Cusco — Descanso merecido",
+      "pontos_interesse": [
+        {
+          "nome": "Museu Santuarios Andinos",
+          "tipo": "Museu",
+          "descricao": "Múmia inca Juanita (500 anos)",
+          "tempo": "1.5h",
+          "lat": -13.5330,
+          "lng": -71.9900
+        },
+        {
+          "nome": "Mercado San Pedro",
+          "tipo": "Mercado",
+          "descricao": "Sucos naturais e comida típica",
+          "tempo": "1.5h",
+          "lat": -13.5380,
+          "lng": -71.9850
+        }
+      ]
+    },
+    {
+      "day": 13,
+      "cidade": "Cusco",
+      "estado": "Cusco, Peru",
+      "populacao": "427.000",
+      "altitude": 5200,
+      "lat": -13.5316,
+      "lng": -71.9877,
+      "tipo": "Trekking",
+      "km": 0,
+      "tempo": "5h trekking",
+      "dificuldade": "🔴 Extrema",
+      "descricao": "Montanha de 7 Cores (Vinicunca) — 5.200m",
+      "pontos_interesse": [
+        {
+          "nome": "Montanha de 7 Cores",
+          "tipo": "Natura",
+          "descricao": "Camadas geológicas multicoloridas",
+          "tempo": "5h",
+          "lat": -13.8961,
+          "lng": -71.3050
+        }
+      ]
+    },
+    {
+      "day": 14,
+      "cidade": "Puno",
+      "estado": "Puno, Peru",
+      "populacao": "141.000",
+      "altitude": 3812,
+      "lat": -15.8402,
+      "lng": -70.1319,
+      "tipo": "Parada",
+      "km": 390,
+      "tempo": "6-7h",
+      "dificuldade": "Média",
+      "descricao": "Cusco → Puno Via Ruta 3S + Sillustani",
+      "pontos_interesse": [
+        {
+          "nome": "La Raya (4.338m)",
+          "tipo": "Mirante",
+          "descricao": "Divisão de dois rios (Atlântico vs Pacífico)",
+          "tempo": "20-30min",
+          "lat": -14.3361,
+          "lng": -70.5283
+        },
+        {
+          "nome": "Sillustani",
+          "tipo": "Arqueológico",
+          "descricao": "Torres funerárias pré-incas",
+          "tempo": "1-1.5h",
+          "lat": -15.7967,
+          "lng": -70.3250
+        }
+      ]
+    },
+    {
+      "day": 15,
+      "cidade": "Lago Titicaca",
+      "estado": "Puno, Peru",
+      "populacao": "Lago Sagrado",
+      "altitude": 3812,
+      "lat": -15.8402,
+      "lng": -70.1319,
+      "tipo": "Tour",
+      "km": 0,
+      "tempo": "7-9h (navegação barco)",
+      "dificuldade": "Baixa",
+      "descricao": "Titicaca & Ilhas Flutuantes",
+      "pontos_interesse": [
+        {
+          "nome": "Ilhas Flutuantes Uros",
+          "tipo": "Cultural",
+          "descricao": "Ilhas que FLUTUAM (único mundo)",
+          "tempo": "1.5h",
+          "lat": -15.7833,
+          "lng": -70.0667
+        },
+        {
+          "nome": "Isla Taquile",
+          "tipo": "Cultural",
+          "descricao": "Tecelagem (homens tecem!)",
+          "tempo": "3-4h",
+          "lat": -15.6500,
+          "lng": -69.8333
+        }
+      ]
+    },
+    {
+      "day": 16,
+      "cidade": "Arequipa",
+      "estado": "Arequipa, Peru",
+      "populacao": "773.000",
+      "altitude": 3660,
+      "lat": -16.3894,
+      "lng": -71.5350,
+      "tipo": "Parada",
+      "km": 300,
+      "tempo": "5-6h",
+      "dificuldade": "Média",
+      "descricao": "Puno → Arequipa via Panamericana",
+      "pontos_interesse": [
+        {
+          "nome": "Vulcão Misti",
+          "tipo": "Natura",
+          "descricao": "Visível ao longe (5.822m)",
+          "tempo": "Contínuo",
+          "lat": -16.2950,
+          "lng": -71.4094
+        }
+      ]
+    },
+    {
+      "day": 17,
+      "cidade": "Cânion del Colca",
+      "estado": "Arequipa, Peru",
+      "populacao": "Sítio Arqueológico",
+      "altitude": 3400,
+      "lat": -15.5667,
+      "lng": -71.8333,
+      "tipo": "Tour",
+      "km": 300,
+      "tempo": "10h (ida+volta)",
+      "dificuldade": "Média",
+      "descricao": "Cânion del Colca — 3.400m profundidade!",
+      "pontos_interesse": [
+        {
+          "nome": "Cruz del Cóndor",
+          "tipo": "Natura",
+          "descricao": "Condores acrobáticos sobre precipício",
+          "tempo": "1-1.5h",
+          "lat": -15.6000,
+          "lng": -71.8667
+        }
+      ]
+    },
+    {
+      "day": 18,
+      "cidade": "Nazca",
+      "estado": "Ica, Peru",
+      "populacao": "30.000",
+      "altitude": 600,
+      "lat": -14.8345,
+      "lng": -75.1522,
+      "tipo": "Parada",
+      "km": 570,
+      "tempo": "8-9h",
+      "dificuldade": "Média",
+      "descricao": "Arequipa → Nazca via Panamericana",
+      "pontos_interesse": []
+    },
+    {
+      "day": 19,
+      "cidade": "Paracas",
+      "estado": "Ica, Peru",
+      "populacao": "2.000",
+      "altitude": 0,
+      "lat": -13.8281,
+      "lng": -76.2593,
+      "tipo": "Sobrevoo",
+      "km": 0,
+      "tempo": "30min voo",
+      "dificuldade": "Baixa",
+      "descricao": "Linhas de Nazca — Sobrevoo 30min",
+      "pontos_interesse": [
+        {
+          "nome": "Linhas de Nazca",
+          "tipo": "Arqueológico",
+          "descricao": "Geóglifos gigantescos (2.000 anos)",
+          "tempo": "30min",
+          "lat": -14.7343,
+          "lng": -75.1256
+        }
+      ]
+    },
+    {
+      "day": 20,
+      "cidade": "Lima",
+      "estado": "Lima, Peru",
+      "populacao": "8.600.000",
+      "altitude": 500,
+      "lat": -12.0464,
+      "lng": -77.0428,
+      "tipo": "Capital",
+      "km": 260,
+      "tempo": "4-5h",
+      "dificuldade": "Baixa",
+      "descricao": "Paracas → Lima via Panamericana",
+      "pontos_interesse": [
+        {
+          "nome": "Malecón Miraflores",
+          "tipo": "Turismo",
+          "descricao": "Beira-mar iluminado",
+          "tempo": "1h",
+          "lat": -12.1257,
+          "lng": -77.2493
+        },
+        {
+          "nome": "Plaza Mayor",
+          "tipo": "Histórico",
+          "descricao": "Centro histórico",
+          "tempo": "1h",
+          "lat": -12.0450,
+          "lng": -77.0380
+        }
+      ]
+    },
+    {
+      "day": 21,
+      "cidade": "Manaus",
+      "estado": "Amazonas, Brasil",
+      "populacao": "1.680.000",
+      "altitude": 92,
+      "lat": -3.1190,
+      "lng": -60.0217,
+      "tipo": "Retorno",
+      "km": 0,
+      "tempo": "Voo direto ~5h",
+      "dificuldade": "Baixa",
+      "descricao": "Lima → Manaus — VOLTA FINAL"
+    }
+  ]
+}
