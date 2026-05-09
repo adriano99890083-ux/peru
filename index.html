@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEADROAD — Expedição Manaus ↔ Peru</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDynVBOjcYatO4wuNoSlcO1rTba7g3BYU4&libraries=places,directions"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 0;
+            min-height: 90vh;
+        }
+
+        .header {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 1em;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .stat-icon {
+            font-size: 1.5em;
+        }
+
+        #map {
+            grid-column: 1;
+            grid-row: 2;
+            height: 100%;
+            min-height: 500px;
+            position: relative;
+        }
+
+        .sidebar {
+            grid-column: 2;
+            grid-row: 2;
+            background: #f8f9fa;
+            border-left: 1px solid #ddd;
+            overflow-y: auto;
+            padding: 20px;
+            max-height: 600px;
+        }
+
+        .sidebar h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .sidebar-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .info-box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .info-box h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .info-box p {
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .info-box .label {
+            font-weight: bold;
+            color: #333;
+            margin-top: 8px;
+        }
+
+        .marker-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #667eea;
+            font-size: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .marker-icon:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.2);
+        }
+
+        .poi-marker-icon {
+            width: 30px;
+            height: 30px;
+            background: #ff6b6b;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 14px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .controls {
+            grid-column: 1 / -1;
+            background: white;
+            border-top: 1px solid #ddd;
+            padding: 20px 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button.secondary {
+            background: #6c757d;
+        }
+
+        button.secondary:hover {
+            background: #5a6268;
+        }
+
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+        }
+
+        .legend-color {
+            width: 25px;
+            height: 15px;
+            border-radius: 3px;
+        }
+
+        .legend-color.ida {
+            background: #FF6B6B;
+        }
+
+        .legend-color.exploracao {
+            background: #4ECDC4;
+        }
+
+        .legend-color.retorno {
+            background: #FFE66D;
+        }
+
+        .legend-color.voo {
+            background: #95E1D3;
+        }
+
+        .difficulty {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.85em;
+        }
+
+        .difficulty.extrema {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .difficulty.alta {
+            background: #ffa500;
+            color: white;
+        }
+
+        .difficulty.media {
+            background: #ffd93d;
+            color: #333;
+        }
+
+        .difficulty.baixa {
+            background: #6bcf7f;
+            color: white;
+        }
+
+        .footer {
+            grid-column: 1 / -1;
+            background: #f8f9fa;
+            border-top: 1px solid #ddd;
+            padding: 15px 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                grid-column: 1;
+                grid-row: 3;
+                max-height: 300px;
+            }
+        }
+
+        .search-box {
+            margin-bottom: 15px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .day-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .infowindow-content {
+            max-width: 250px;
+            font-family: Arial, sans-serif;
+        }
+
+        .infowindow-content h3 {
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .infowindow-content p {
+            font-size: 0.9em;
+            margin: 5px 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗺️ HEADROAD — Expedição Manaus ↔ Peru</h1>
+            <p>Roadtrip interativo de 21 dias</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-icon">📅</span>
+                    <span><strong>21 dias</strong></span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">🚗</span>
+                    <span><strong>4.595 km</strong></span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">🏔️</span>
+                    <span><strong>12 cidades</strong></span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">🎯</span>
+                    <span><strong>50+ POIs</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <div id="map"></div>
+
+        <div class="sidebar">
+            <div class="day-select">
+                <label for="dayFilter">Filtrar por dia:</label>
+                <select id="dayFilter">
+                    <option value="">Todos os dias</option>
+                </select>
+            </div>
+
+            <h3>📍 Informações</h3>
+            <div class="sidebar-content" id="sidebarContent">
+                <p style="color: #999;">Clique em um marcador no mapa para ver detalhes</p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="toggleRoute()">🛣️ Mostrar/Ocultar Rota</button>
+            <button onclick="togglePOI()">🎯 Mostrar/Ocultar POIs</button>
+            <button onclick="zoomToAll()">🔍 Ver Tudo</button>
+            <button class="secondary" onclick="resetMap()">↻ Resetar</button>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color ida"></div>
+                    <span>Ida (Amazônia)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color exploracao"></div>
+                    <span>Exploração (Peru)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color retorno"></div>
+                    <span>Retorno (Lima)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color voo"></div>
+                    <span>Voo (Retorno)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>📌 Clique em um marcador para ver detalhes da parada | 📍 Pontos vermelhos = Pontos de Interesse (museus, restaurantes, etc)</p>
+            <p style="margin-top: 10px; font-size: 0.85em;">Desenvolvido com Google Maps API | Dados: HEADROAD Expedição 2026</p>
+        </div>
+    </div>
+
+    <script>
+        let map;
+        let markers = [];
+        let poiMarkers = [];
+        let routePolyline;
+        let infoWindows = [];
+        let routeVisible = true;
+        let poiVisible = true;
+        let stopsData = [];
+
+        // Carregar dados
+        async function loadData() {
+            try {
+                const response = await fetch('headroad-map-data.json');
+                stopsData = await response.json();
+                console.log('Dados carregados:', stopsData);
+            } catch (error) {
+                console.error('Erro ao carregar dados:', error);
+                // Fallback: usar dados inline se arquivo não carregar
+                stopsData = window.fallbackData || {};
+            }
+        }
+
+        function initMap() {
+            // Centro no Brasil
+            const center = { lat: -8.7669, lng: -63.9039 };
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: center,
+                mapTypeControl: true,
+                fullscreenControl: true,
+                zoomControl: true,
+                streetViewControl: false,
+                styles: [
+                    { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#e9e9e9' }, { lightness: 17 }] },
+                    { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#f3f3f3' }, { lightness: 20 }] },
+                    { featureType: 'road.highway', elementType: 'geometry.fill', stylers: [{ color: '#fadcad' }, { lightness: 0 }] },
+                    { featureType: 'road.arterial', elementType: 'geometry.fill', stylers: [{ color: '#fdf5d9' }, { lightness: 0 }] },
+                ]
+            });
+
+            loadData().then(() => {
+                drawRoute();
+                addMarkers();
+                populateDayFilter();
+            });
+        }
+
+        function drawRoute() {
+            const routeCoordinates = stopsData.stops
+                .filter(stop => stop.lat && stop.lng)
+                .map(stop => ({ lat: stop.lat, lng: stop.lng }));
+
+            if (routeCoordinates.length > 1) {
+                routePolyline = new google.maps.Polyline({
+                    path: routeCoordinates,
+                    geodesic: true,
+                    strokeColor: '#667eea',
+                    strokeOpacity: 0.7,
+                    strokeWeight: 3,
+                    map: map,
+                    zIndex: 1
+                });
+            }
+        }
+
+        function addMarkers() {
+            stopsData.stops.forEach((stop, index) => {
+                if (!stop.lat || !stop.lng) return;
+
+                // Determinar cor por fase
+                let color = '#667eea';
+                if (stop.day <= 6) color = '#FF6B6B'; // Ida
+                else if (stop.day <= 14) color = '#4ECDC4'; // Exploração
+                else if (stop.day <= 20) color = '#FFE66D'; // Retorno
+                else color = '#95E1D3'; // Voo
+
+                const marker = new google.maps.Marker({
+                    position: { lat: stop.lat, lng: stop.lng },
+                    map: map,
+                    title: `Dia ${stop.day}: ${stop.cidade}`,
+                    label: {
+                        text: stop.day.toString(),
+                        color: 'white',
+                        fontSize: '14px',
+                        fontWeight: 'bold'
+                    },
+                    icon: {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: 12,
+                        fillColor: color,
+                        fillOpacity: 0.9,
+                        strokeColor: 'white',
+                        strokeWeight: 2
+                    },
+                    zIndex: 10
+                });
+
+                marker.addListener('click', () => {
+                    closeAllInfoWindows();
+                    showStopInfo(stop, marker);
+                });
+
+                markers.push(marker);
+
+                // Adicionar POIs
+                if (stop.pontos_interesse && stop.pontos_interesse.length > 0) {
+                    stop.pontos_interesse.forEach(poi => {
+                        const poiLat = poi.lat || stop.lat;
+                        const poiLng = poi.lng || stop.lng;
+
+                        const poiMarker = new google.maps.Marker({
+                            position: { lat: poiLat, lng: poiLng },
+                            map: map,
+                            title: poi.nome,
+                            icon: {
+                                path: google.maps.SymbolPath.CIRCLE,
+                                scale: 8,
+                                fillColor: '#ff6b6b',
+                                fillOpacity: 0.7,
+                                strokeColor: 'white',
+                                strokeWeight: 2
+                            },
+                            zIndex: 5
+                        });
+
+                        poiMarker.addListener('click', () => {
+                            closeAllInfoWindows();
+                            showPOIInfo(poi, poiMarker);
+                        });
+
+                        poiMarkers.push(poiMarker);
+                    });
+                }
+            });
+        }
+
+        function showStopInfo(stop, marker) {
+            const infoContent = `
+                <div class="infowindow-content">
+                    <h3>📍 Dia ${stop.day}: ${stop.cidade}</h3>
+                    <p><strong>${stop.estado}</strong></p>
+                    <p>Altitude: ${stop.altitude}m</p>
+                    <p>População: ${stop.populacao}</p>
+                    <p><strong>Quilometragem:</strong> ${stop.km} km</p>
+                    <p><strong>Tempo:</strong> ${stop.tempo}</p>
+                    <p><strong>Dificuldade:</strong> ${stop.dificuldade}</p>
+                    <p><em>${stop.descricao}</em></p>
+                    ${stop.pontos_interesse && stop.pontos_interesse.length > 0 ?
+                        `<p><strong>${stop.pontos_interesse.length} Pontos de Interesse</strong></p>` :
+                        ''}
+                </div>
+            `;
+
+            const infoWindow = new google.maps.InfoWindow({
+                content: infoContent,
+                maxWidth: 300
+            });
+
+            infoWindow.open(map, marker);
+            infoWindows.push(infoWindow);
+
+            // Atualizar sidebar
+            updateSidebar(stop);
+        }
+
+        function showPOIInfo(poi, marker) {
+            const infoContent = `
+                <div class="infowindow-content">
+                    <h3>🎯 ${poi.nome}</h3>
+                    <p><strong>Tipo:</strong> ${poi.tipo}</p>
+                    <p>${poi.descricao}</p>
+                    <p><strong>Tempo:</strong> ${poi.tempo}</p>
+                    ${poi.custo ? `<p><strong>Custo:</strong> ${poi.custo}</p>` : ''}
+                </div>
+            `;
+
+            const infoWindow = new google.maps.InfoWindow({
+                content: infoContent,
+                maxWidth: 300
+            });
+
+            infoWindow.open(map, marker);
+            infoWindows.push(infoWindow);
+        }
+
+        function updateSidebar(stop) {
+            const html = `
+                <div class="info-box">
+                    <h4>Dia ${stop.day}: ${stop.cidade}</h4>
+                    <p>${stop.estado}</p>
+                    <p class="label">Altitude: ${stop.altitude}m</p>
+                    <p class="label">População: ${stop.populacao}</p>
+                    <p class="label">Quilometragem: ${stop.km} km</p>
+                    <p class="label">Tempo: ${stop.tempo}</p>
+                    <p><span class="difficulty ${stop.dificuldade.includes('Extrema') ? 'extrema' : stop.dificuldade.includes('Alta') ? 'alta' : stop.dificuldade.includes('Média') ? 'media' : 'baixa'}">${stop.dificuldade}</span></p>
+                    <p style="margin-top: 10px; font-style: italic;">${stop.descricao}</p>
+                </div>
+                ${stop.pontos_interesse && stop.pontos_interesse.length > 0 ?
+                    `<div style="margin-top: 15px;">
+                        <h4 style="color: #ff6b6b; font-size: 1em;">Pontos de Interesse:</h4>
+                        ${stop.pontos_interesse.map(poi => `
+                            <div class="info-box" style="border-left-color: #ff6b6b; font-size: 0.85em;">
+                                <p><strong>${poi.nome}</strong></p>
+                                <p>${poi.descricao}</p>
+                                <p><small>Tempo: ${poi.tempo}</small></p>
+                            </div>
+                        `).join('')}
+                    </div>` :
+                    ''}
+            `;
+
+            document.getElementById('sidebarContent').innerHTML = html;
+        }
+
+        function closeAllInfoWindows() {
+            infoWindows.forEach(iw => iw.close());
+            infoWindows = [];
+        }
+
+        function toggleRoute() {
+            routeVisible = !routeVisible;
+            if (routePolyline) {
+                routePolyline.setVisible(routeVisible);
+            }
+        }
+
+        function togglePOI() {
+            poiVisible = !poiVisible;
+            poiMarkers.forEach(marker => marker.setVisible(poiVisible));
+        }
+
+        function zoomToAll() {
+            const bounds = new google.maps.LatLngBounds();
+            markers.forEach(marker => bounds.extend(marker.getPosition()));
+            map.fitBounds(bounds);
+            map.setZoom(Math.min(map.getZoom(), 5));
+        }
+
+        function resetMap() {
+            map.setCenter({ lat: -8.7669, lng: -63.9039 });
+            map.setZoom(4);
+            closeAllInfoWindows();
+            document.getElementById('sidebarContent').innerHTML = '<p style="color: #999;">Clique em um marcador para ver detalhes</p>';
+            document.getElementById('dayFilter').value = '';
+        }
+
+        function populateDayFilter() {
+            const select = document.getElementById('dayFilter');
+            stopsData.stops.forEach(stop => {
+                const option = document.createElement('option');
+                option.value = stop.day;
+                option.textContent = `Dia ${stop.day}: ${stop.cidade}`;
+                select.appendChild(option);
+            });
+
+            select.addEventListener('change', (e) => {
+                if (e.target.value) {
+                    const stop = stopsData.stops.find(s => s.day == e.target.value);
+                    if (stop) {
+                        const marker = markers.find(m =>
+                            m.getPosition().lat() === stop.lat &&
+                            m.getPosition().lng() === stop.lng
+                        );
+                        if (marker) {
+                            map.setCenter(marker.getPosition());
+                            map.setZoom(8);
+                            closeAllInfoWindows();
+                            showStopInfo(stop, marker);
+                        }
+                    }
+                }
+            });
+        }
+
+        // Inicializar quando página carregar
+        window.addEventListener('load', initMap);
+    </script>
+</body>
+</html>
